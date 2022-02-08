@@ -38,11 +38,20 @@ class StudentTest {
     }
 
     @Test
-    void shouldConstructandReturnStudentAsString(){
+    void shouldConstructorandReturnStudentAsString(){
         var student = new Student("Max", 22);
         student.setSubject("Biology");
 
         assertEquals("Max, 22, Biology", student.toString());
+    }
+
+    @Test
+    void shouldEqualTrue() {
+        var student = new Student("Max", 25);
+        var student2 = new Student("Max", 22);
+
+        //assertTrue(student.equals(student));
+        assertTrue(student.equals(student2));
     }
 
 }
