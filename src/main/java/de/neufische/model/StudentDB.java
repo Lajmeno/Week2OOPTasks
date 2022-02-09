@@ -1,13 +1,15 @@
 package de.neufische.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class StudentDB {
 
-    public Student[] studentArray;
+    public List<Student> studentArray;
 
 
-    StudentDB(Student[] studentArray){
+    StudentDB(List<Student> studentArray){
 
         this.studentArray = studentArray;
 
@@ -16,38 +18,47 @@ public class StudentDB {
 
 
     public String getRandomStudent(){
-        double rand = (Math.random() * (studentArray.length));
-        return studentArray[(int) rand].toString();
+        double rand = (Math.random() * (studentArray.size()));
+        return studentArray.get((int) rand).toString();
     }
 
 
 
     public void addStudent(Student student){
-        Student[] newArray =  new Student[studentArray.length + 1];
-        for (int i = 0; i < studentArray.length; i++) {
-            newArray[i] = studentArray[i];
-        }
-        newArray[studentArray.length - 1] = student;
-        this.studentArray = newArray;
+        studentArray.add(student);
+//        List<Student> newArray =  new ArrayList<>(studentArray.size() + 1);
+//        for (int i = 0; i < studentArray.size(); i++) {
+//            newArray.add(studentArray.get(i));
+//        }
+//        newArray.add(student);
+//        this.studentArray = newArray;
 
     }
 
+    public void removeStudent(Student student){
+        studentArray.remove(student);
+//        int indexToDelete = 0;
+//        for (int i = 0; i < studentArray.size(); i++) {
+//            if (student.equals(studentArray.get(i))){
+//                indexToDelete = 1;
+//            }else {
+//                if(!(i == studentArray.size() - 1 && indexToDelete == 0)){
+//                    newArray[i-indexToDelete] = studentArray[i];
+//                }
+//            }
+//        }
+//        if (!(indexToDelete == 0)) {
+//            this.studentArray = newArray;
+//        }
 
-    public static void main(String[] args) {
-        Student[] students = new Student[3];
-        students[0] = new Student("Alfred", 1);
-        students[1] = new Student("Olli", 2);
-        students[2] = new Student("Gabi", 3);
+//        System.arraycopy();
 
-
-        var studentDB = new StudentDB(students);
-        System.out.println(studentDB.getRandomStudent());
-        System.out.println((int) (Math.random()*3));
     }
+
 
     @Override
     public String toString() {
-        return "StudentDB{" + Arrays.toString(studentArray) +
+        return "StudentDB{"+ studentArray +
                 '}';
     }
 }

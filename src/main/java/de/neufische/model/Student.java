@@ -34,13 +34,12 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return age == student.age && Objects.equals(fistName, student.fistName) && Objects.equals(subject, student.subject);
+        return id == student.id && age == student.age && Objects.equals(fistName, student.fistName) && Objects.equals(subject, student.subject);
     }
-
 
     @Override
     public int hashCode() {
-        return Objects.hash(age, fistName, subject);
+        return Objects.hash(id, age, fistName, subject);
     }
 
     public void setFistName(String fistName) {
@@ -67,10 +66,6 @@ public class Student {
         return subject;
     }
 
-    public static void main(String[] args) {
-        var student = new Student("Hanno", 22);
-        student.printThis();
-        System.out.println(student);
-    }
+
 
 }
